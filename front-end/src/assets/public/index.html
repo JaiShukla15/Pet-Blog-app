@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<script>
+$(document).ready(function() {
+	$('#rght_cat_bg').click(function() {
+			$('.rght_list').toggle("slide");
+	});
+});
+</script>
+<script>
+$(document).ready(function() {
+	$('#opn_cat_bg').click(function() {
+			$('.sub_dwn').toggle("slide");
+	});
+});
+</script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="brand" href="">PPL</a>
+      <div class="pro_info pull-right">
+        <div class="pro_icn"><img src="images/pic_small.png"></div>
+        <div class="pro_txt">Me<b class="caret"></b></div>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a tabindex="-1" href="#">My Profile</a></li>
+          <li><a tabindex="-1" href="#">Message Box</a></li>
+          <li><a tabindex="-1" href="#">Change Language</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">
+            <input type="text" placeholder="search" >
+            </a></li>
+        </ul>
+      </div>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"> <a href="">Home</a> </li>
+          <li class=""> <a href="">E-Coupons</a> </li>
+          <li class=""> <a href="">E-Brands</a> </li>
+          <li class=""> <a href="">Resuse Market</a> </li>
+          <li class=""> <a href="">Lost and Found</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="header">
+  <div class="header_lft">
+    <div class="logo"><a href="#"><img src="images/logo.png"></a></div>
+    <div class="navigatn">
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#"> E-Coupons </a></li>
+        <li><a href="#">E-Brands </a></li>
+        <li><a href="#"> Resuse Market </a></li>
+        <li><a href="#"> Lost and Found</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="header_rgt">
+    <div class="flag_div"><img src="images/flag.png"></div>
+    <input type="text" placeholder="Search" class="txt_box">
+    <div class="msg_box"><a href="#"><span class="msg_count">100</span></a></div>
+    <div class="info_div">
+      <div class="image_div"> <img src="images/pic.png"> </div>
+      <div class="info_div1">Me</div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="content_rgt">
+      <div class="rght_btn"> <span class="rght_btn_icon"><img src="images/btn_iconb.png" alt="up" /></span> <span class="btn_sep"><img src="images/btn_sep.png" alt="sep" /></span> <a href="#">Upload Post</a> </div>
+      <div class="rght_btn"> <span class="rght_btn_icon"><img src="images/btn_icona.png" alt="up" /></span> <span class="btn_sep"><img src="images/btn_sep.png" alt="sep" /></span> <a href="#">Invite Friends</a> </div>
+      <div class="rght_cate">
+        <div class="rght_cate_hd" id="rght_cat_bg">Categories</div>
+        <div class="rght_list">
+          <ul>
+            <li><a href="#"><span class="list_icon"><img src="images/icon_01.png" alt="up" /></span> CATS</a></li>
+            <li><a href="#"><span class="list_icon"><img src="images/icon_02.png" alt="up" /></span> Dogs</a></li>
+            <li><a href="#"><span class="list_icon"><img src="images/icon_03.png" alt="up" /></span> Birds</a></li>
+            <li><a href="#"><span class="list_icon"><img src="images/icon_04.png" alt="up" /></span> Rabbit</a></li>
+            <li><a href="#"><span class="list_icon"><img src="images/icon_05.png" alt="up" /></span> Others</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rght_cate">
+        <div class="rght_cate_hd" id="opn_cat_bg">Featured</div>
+        <div class="sub_dwn">
+          <div class="feat_sec">
+            <div class="feat_sec_img"><img src="images/feat_img1.png" alt="image" /></div>
+            <div class="feat_txt">Lorem Ipusum Text</div>
+            <div class="btm_rgt">
+              <div class="btm_arc">Cats</div>
+            </div>
+          </div>
+          <div class="feat_sec">
+            <div class="feat_sec_img"><img src="images/feat_img2.png" alt="image" /></div>
+            <div class="feat_txt">Lorem Ipusum Text</div>
+            <div class="btm_rgt">
+              <div class="btm_arc">Dogs</div>
+            </div>
+          </div>
+          <div class="feat_sec">
+            <div class="feat_sec_img"><img src="images/feat_img3.png" alt="image" /></div>
+            <div class="feat_txt">Lorem Ipusum Text</div>
+            <div class="btm_rgt">
+              <div class="btm_arc">Rabbits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content_lft">
+      <div class="contnt_1">
+        <div class="list_1">
+          <ul>
+            <li>
+              <input type="checkbox" class="chk_bx">
+              Friends</li>
+            <li>
+              <input type="checkbox" class="chk_bx">
+              Flaged</li>
+          </ul>
+        </div>
+        <div class="post_div">
+          <div class="post_list">
+            <ul>
+              <li><a href="#"><span class="list_img"><img src="images/img_1.png"></span>Latest First</a></li>
+              <li><a href="#"><span class="list_img"><img src="images/img_2.png"></span>Oldest First</a></li>
+              <li><a href="#"><span class="list_img"><img src="images/img_3.png"></span>Most Pet</a></li>
+              <li><a href="#"><span class="list_img"><img src="images/img_4.png"></span>Most Clicks</a></li>
+              <li><a href="#"><span class="list_img"><img src="images/img_5.png"></span>Most Commented</a></li>
+            </ul>
+          </div>
+          <div class="post_txt">4 New Post Updates</div>
+        </div>
+      </div>
+      <div class="contnt_2">
+        <div class="div_a">
+          <div class="div_title">User Interface PSD Source files Web Designing for web</div>
+          <div class="btm_rgt">
+            <div class="btm_arc">Cats</div>
+          </div>
+          <div class="div_top">
+            <div class="div_top_lft"><img src="images/img_6.png">Steave Waugh</div>
+            <div class="div_top_rgt"><span class="span_date">02 Jan 2014</span><span class="span_time">11:15am</span></div>
+          </div>
+          <div class="div_image"><img src="images/lft_img.png" alt="pet" /></div>
+          <div class="div_btm">
+            <div class="btm_list">
+              <ul>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_001.png" alt="share" /></span>Share</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_002.png" alt="share" /></span>Flag</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_004.png" alt="share" /></span>4 Comments</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_003.png" alt="share" /></span>Likes</a></li>
+                <div class="like_count" style="margin-right: 10px;"><span class="lft_cnt"></span><span class="mid_cnt">10</span><span class="rit_cnt"></span></div>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_003.png" alt="share" /></span>Unlike</a></li>
+                <div class="like_count"><span class="lft_cnt"></span><span class="mid_cnt">4</span><span class="rit_cnt"></span></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contnt_2">
+        <div class="div_a">
+          <div class="div_title">User Interface PSD Source files Web Designing for web</div>
+          <div class="btm_rgt">
+            <div class="btm_arc">Dogs</div>
+          </div>
+          <div class="div_top">
+            <div class="div_top_lft"><img src="images/img_6.png">Steave Waugh</div>
+            <div class="div_top_rgt"><span class="span_date">02 Jan 2014</span><span class="span_time">11:15am</span></div>
+          </div>
+          <div class="div_image"><img src="images/lft_img1.png" alt="pet" /></div>
+          <div class="div_btm">
+            <div class="btm_list">
+              <ul>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_001.png" alt="share" /></span>Share</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_002.png" alt="share" /></span>Flag</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_004.png" alt="share" /></span>4 Comments</a></li>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_003.png" alt="share" /></span>Likes</a></li>
+                <div class="like_count" style="margin-right: 10px;"><span class="lft_cnt"></span><span class="mid_cnt">10</span><span class="rit_cnt"></span></div>
+                <li><a href="#"><span class="btn_icon"><img src="images/icon_003.png" alt="share" /></span>Unlike</a></li>
+                <div class="like_count"><span class="lft_cnt"></span><span class="mid_cnt">4</span><span class="rit_cnt"></span></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+<div class="footr">
+  <div class="footr_lft">
+    <div class="footer_div1">Copyright © Pet-Socail 2014 All Rights Reserved</div>
+    <div class="footer_div2"><a href="#">Privacy Policy </a>| <a href="#"> Terms & Conditions</a></div>
+  </div>
+  <div class="footr_rgt">
+    <ul>
+      <li><a href="#"><img src="images/social_1.png"></a></li>
+      <li><a href="#"><img src="images/social_2.png"></a></li>
+      <li><a href="#"><img src="images/social_3.png"></a></li>
+      <li><a href="#"><img src="images/social_4.png"></a></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

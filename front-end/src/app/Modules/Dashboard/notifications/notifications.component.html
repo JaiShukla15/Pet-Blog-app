@@ -1,0 +1,27 @@
+<div class="notificationBody">
+    <h1>Notifications</h1>
+    <div *ngFor="let notification of notifications">
+        <h5 class="alert alert-success" routerLink="/dashboard/post/{{notification.postId}}">
+            {{notification.notification}} on {{notification.notificationDate|date}} at {{notification.notificationDate |date:'shortTime'}}
+        </h5>
+    </div>
+    <div *ngIf="notifications.length">
+        <button class="clearAllNotifications" (click)="clearNotifications()">Clear Notifications</button>
+    </div>
+
+    <div *ngIf="!notifications.length">
+        <br>
+        <h4>No New Notification Found !</h4>
+        <img src="../../../assets/public/images/img_9.png" alt="" />
+    </div>
+    <div class="popup_sec" id="" [ngStyle]="!check && {'display': 'none'}">
+        <div class="clos_btn" (click)="onDone()"><img src="../../../../assets/public/images/clos.png" alt="" id="clos_pop" /></div>
+        <div class="man_contnt">
+            {{msg}}<br>
+            <input type="submit" value="Ok" style="margin-top: 20px;" (click)="onDone()">
+        </div>
+    </div>
+    <div class="man_contnt  popup_reg" [ngStyle]="!wait && {'display': 'none'}">
+        <img src="../../../assets/public/images/spinner.gif" alt="">
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="header_rgt" *ngIf="username">
+    <div class="flag_div"><img src="../../../assets/public/images/flag.png"></div>
+    <input type="text" placeholder="Search" class="txt_box">
+    <div class="msg_box"><a href="#"><span class="msg_count">100</span></a></div>
+    <div class="info_div">
+        <div class="image_div" *ngIf="username"> <img src="{{profilePic}}" alt="{{username}}"> </div>
+        <div class="username" *ngIf="username" routerLink="/dashboard/profile">{{username}}</div>
+        <select class="info_div1 timeline_dropdown" (change)="goTo($event.target)">
+            <option value="/dashboard">Dashboard</option>
+            <option value="/dashboard/profile"> My Profile</option>
+            <option (click)="logout()" value='logout'>Logout</option>
+        </select>
+
+    </div>
+</div>
+<div class="man_contnt  popup_reg" [ngStyle]="!wait && {'display': 'none'}">
+    <img src="../../../assets/public/images/spinner.gif" alt="">
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,37 @@
+<div class="content_rgt">
+  <div class="login_sec">
+    <h1>Log In</h1>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onLoginForm(loginForm)">
+      <ul>
+        <li><span>Email-ID</span><input type="text" formControlName="username" placeholder="Enter your email"></li>
+        <div *ngIf="username.errors && username.touched">
+          <span class="text-danger" *ngIf="username.errors.required">Plese enter your username</span>
+          <span class="text-danger" *ngIf="username.errors.email">Invalid Username try again</span>
+        </div>
+        <li><span>Password</span><input type="password" showPassword formControlName="password"
+            placeholder="Enter your password"></li>
+        <div *ngIf="password.errors && password.touched">
+          <span class="text-danger" *ngIf="password.errors.required">Plese enter your password</span>
+          <span class="text-danger" *ngIf="password.errors.pattern">Password must be alpha-numeric and contain at least
+            1 digit and 1 special character</span>
+        </div>
+        <li><input type="checkbox">Remember Me</li>
+        <li><input type="submit" [disabled]="loginForm.invalid" value="Log In"></li>
+        <li> <a href="" routerLink="/forgotPassword">Forgot Password</a></li>
+      </ul>
+      <div class="addtnal_acnt">I do not have any account yet.<a href="" routerLink="/">Create My Account Now !</a>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="popup_sec" id="" [ngStyle]="!check && {'display': 'none'}">
+  <div class="clos_btn"><img src="images/clos.png" alt="" id="clos_pop" /></div>
+  <div class="man_contnt">
+    {{userMes}}<br>
+    <input type="submit" value="Ok" style="margin-top: 20px;" (click)="onDone()">
+  </div>
+</div>
+
+<div class="content_lft">
+  <app-home></app-home>
+</div>

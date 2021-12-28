@@ -1,0 +1,52 @@
+<app-user-posts></app-user-posts>
+<div class="content_rgt">
+    <div class="register_sec">
+        <h1>Add New Post</h1>
+        <form class="form selectImg" [formGroup]="postForm" (ngSubmit)="savePost(postForm)">
+            <ul>
+                <li><span>Title</span><input type="text" name="title" required [class.is-invalid]="title.touched && title.invalid" formControlName="title" placeholder="Enter your title"></li>
+                <div *ngIf="title.errors && title.touched">
+                    <span class="text-danger" *ngIf="title.errors.required">please enter your post title</span>
+                </div>
+
+                <li><span>Post image</span><input type="file" value="please select your post" (change)="addPost($event)" required></li>
+                <div *ngIf="post.errors && post.touched">
+                    <span class="text-danger" *ngIf="post.errors.required">please select your file</span>
+                </div>
+                <li *ngIf="showImage!=='' && showImage">
+                    <img [src]="showImage" width="120px;" [alt]="postForm.value.title">
+                </li>
+
+                <!-- <li><span>Category</span><input type="text" name="category" required [class.is-invalid]="category.touched && category.invalid" formControlName="category" name="category" id="category" placeholder="Enter your category"></li> -->
+                <li><span>Category</span>
+                    <select formControlName="category" name="category" id="category">
+                    <option value="cat">Cat</option>
+                    <option selected value="dog">Dog</option>
+                    <option value="rabbit">Rabbit</option>
+                    <option value="birds">Birds</option>
+                    <option value="others">Others</option>
+                </select>
+                </li>
+
+                <div *ngIf="category.errors && category.touched">
+                    <span class="text-danger" *ngIf="category.errors.required">post category required</span>
+                    <span class="text-danger" *ngIf="category.errors.minlength">category should have at-least 3
+                        characters</span>
+                </div>
+                <li></li>
+                <li><input type="submit" [disabled]="!postForm.valid" value="Add Post"></li>
+            </ul>
+        </form>
+
+        <div class="popup_sec" id="" [ngStyle]="!check && {'display': 'none'}">
+            <div class="clos_btn"><img src="../../../../assets/public/images/clos.png" alt="" id="clos_pop" /></div>
+            <div class="man_contnt">
+                {{postMsg}}<br>
+                <input type="submit" value="Ok" style="margin-top: 20px;" (click)="onDone()">
+            </div>
+        </div>
+        <div class="man_contnt  popup_reg" [ngStyle]="!wait && {'display': 'none'}">
+            <img src="../../../assets/public/images/spinner.gif" alt="">
+        </div>
+    </div>
+</div>

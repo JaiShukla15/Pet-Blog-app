@@ -1,0 +1,30 @@
+const accountId = "ACe278698d63c18be307668c80b7b1eb2a";
+const authToken = "4fcdafd836fa22fb368bd2843d75c011";
+module.exports = {
+    accountId,
+    authToken,
+    errorMsg: "Something went wrong",
+    likeNotification: "{username} just liked Your Post",
+    commentNotification: "{username} just commented on your post",
+    inCorrectCode: "Incorrect Verification Code try again",
+    userSavedSuccessfully: "User Registered Successfully",
+    dbConnected: "Database Connected Successfully",
+    userDeletedSuccessfully: "User Deleted Successfully",
+    passwordChangedSuccessFully: "Password Changed Successfully",
+    invalidPassword: "Invalid Password",
+    postNotFound: "Post not Found with this id",
+    verifyAccountFirst: "Please verify your account first",
+    verified: "Account verification successfull",
+    userExists: "User already Exists !",
+    incorrectPassword: "Incorrect Password try again !",
+    userVerified: "User Verified Successfully !",
+    userNotFound: "User does not exists ! try again",
+    passwordChangeReq: "please check your mail to change password",
+    invalidToken: "Invalid Token",
+    postAddedSuccessfully: "Post Added Successfully",
+    incorrectAns: "Incorrect answer try again",
+    postUpdatedSuccessfully: "Post Updated Successfully",
+    registeredUserMail: "Congratulations You are now  Registered ! \n \n Pease check your mail",
+    clearNotifications: "Notifications Cleared Successfully",
+    inviteSent: "Invite Sent Successfully"
+};

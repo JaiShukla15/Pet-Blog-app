@@ -1,0 +1,90 @@
+<div class="content_rgt">
+    <div class="register_sec">
+        <h1>Create An Account</h1>
+
+        <form class="form" [formGroup]="registerForm" (ngSubmit)="onSave(registerForm)">
+            <ul>
+                <li><span>Username</span><input type="text" required
+                        [class.is-invalid]="userName.touched && userName.invalid" formControlName="userName"
+                        placeholder="Enter your username"></li>
+                <div *ngIf="userName.errors && userName.touched">
+                    <span class="text-danger" *ngIf="userName.errors.required">please enter your Username</span>
+                    <span class="text-danger" *ngIf="userName.errors.email">Username must be like email</span>
+                </div>
+
+                <li><span>Password</span><input type="password" required
+                        [class.is-invalid]="password.touched && password.invalid" formControlName="password"
+                        placeholder="Enter your password" showPassword>
+                </li>
+                <div *ngIf="password.errors && password.touched">
+                    <span class="text-danger" *ngIf="password.errors.required">please enter your Password</span>
+                    <span class="text-danger" *ngIf="password.errors.pattern">Password must be alpha-numeric and contain
+                        at least 1 digit and 1 special character</span>
+                </div>
+
+                <li><span>Confirm Password</span><input type="password" required
+                        [class.is-invalid]="cpassword.touched && cpassword.invalid" formControlName="cpassword"
+                        placeholder="Enter your confirm password" showPassword></li>
+                <div *ngIf="cpassword.errors && cpassword.touched">
+                    <span class="text-danger" *ngIf="cpassword.errors.required">please enter your Password</span>
+                    <span class="text-danger" *ngIf="cpassword.errors.isNotMatching && password.valid">Password do not
+                        match</span>
+                </div>
+
+                <li><span>Email</span><input type="text" required [class.is-invalid]="email.touched && email.invalid"
+                        formControlName="email" name="email" id="email" placeholder="Enter your email"></li>
+                <div *ngIf="email.errors && email.touched">
+                    <span class="text-danger" *ngIf="email.errors.required">please enter your Email</span>
+                    <span class="text-danger" *ngIf="email.errors.email"> Enter valid email</span>
+                </div>
+
+                <li><span>First Name</span><input type="text" required
+                        [class.is-invalid]="firstName.touched && firstName.invalid" formControlName="firstName"
+                        name="firstName" id="firstName" placeholder="Enter your first name"></li>
+                <div *ngIf="firstName.errors && firstName.touched">
+                    <span class="text-danger" *ngIf="firstName.errors.required">please enter your First Name</span>
+                    <span class="text-danger" *ngIf="firstName.errors.minlength"> First Name must contains atleast 3
+                        leters</span>
+                </div>
+                <li><span>Last Name</span><input type="text" [class.is-invalid]="lastName.touched && lastName.invalid"
+                        formControlName="lastName" name="lastName" id="lastName" placeholder="Enter your last name">
+                </li>
+                <li><span>Please upload your profile picture</span></li>
+                <li><input type="file" name="profilePic" id="profilePic" (change)="displayPic($event)"></li>
+                <div *ngIf="showUserPic!=='' && showUserPic">
+                    <img [src]="showUserPic" width="120px" alt="registerForm.value.firstName picture">
+                </div>
+                <li><span>Security Question <i class="text-danger">*</i></span></li>
+                <li><span>What's your pet name ?</span></li>
+                <li><input type="text" required [class.is-invalid]="security.touched && security.invalid"
+                        formControlName="security" id="security" placeholder="Enter your answer"></li>
+                <div *ngIf="security.errors && security.touched">
+                    <span class="text-danger" *ngIf="security.errors.required">please enter your security answer</span>
+                    <span class="text-danger" *ngIf="security.errors.minlength"> answer must contains atleast 3
+                        characters</span>
+                </div>
+
+                <li><input type="checkbox" required formControlName="termsCondition">I agree to Term & Conditions</li>
+                <div *ngIf="termsCondition.errors && termsCondition.touched">
+                    <span *ngIf="termsCondition.invalid" class="text-danger">Please accept our Terms and
+                        Condition</span>
+                </div>
+                <li><input type="submit" [disabled]="registerForm.invalid" value="Register"></li>
+            </ul>
+        </form>
+        <div class="addtnal_acnt">I already have an account.<a href="" routerLink='/login'>Login My Account !</a></div>
+    </div>
+    <div class="popup_sec" id="" [ngStyle]="!check && {'display': 'none'}">
+        <div class="clos_btn"><img src="images/clos.png" alt="" id="clos_pop" /></div>
+        <div class="man_contnt">
+            {{msg}}<br>
+            <input type="submit" value="Ok" style="margin-top: 20px;" (click)="onDone()">
+        </div>
+    </div>
+    <div class="man_contnt  popup_reg" [ngStyle]="!wait && {'display': 'none'}">
+        <img src="../../../assets/public/images/spinner.gif" alt="">
+    </div>
+</div>
+<div class="content_lft">
+    <app-home></app-home>
+</div>

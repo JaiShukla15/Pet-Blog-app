@@ -1,0 +1,29 @@
+<app-user-posts></app-user-posts>
+<div class="content_rgt">
+    <div class="rght_btn"> <span class="rght_btn_icon"><img src="../../../assets/public/images/btn_iconb.png" alt="up" /></span> <span class="btn_sep"><img src="../../../assets/public/images/btn_sep.png" alt="sep" /></span> <a (click)="goToAddPost()">Upload Post</a> </div>
+    <div class="rght_btn"> <span class="rght_btn_icon"><img src="../../../assets/public/images/btn_icona.png" alt="up" /></span> <span class="btn_sep"><img src="../../../assets/public/images/btn_sep.png" alt="sep" /></span> <a (click)="goToInvite()">Invite Friends</a> </div>
+    <div class="rght_cate">
+        <div class="rght_cate_hd" id="rght_cat_bg">Categories</div>
+        <div class="rght_list">
+            <ul>
+                <li><a routerLink="/dashboard/category/cat"><span class="list_icon"><img src="../../../assets/public/images/icon_01.png" alt="up" /></span> CATS</a></li>
+                <li><a routerLink="/dashboard/category/dog"><span class="list_icon"><img src="../../../assets/public/images/icon_02.png" alt="up" /></span> Dogs</a></li>
+                <li><a routerLink="/dashboard/category/bird"><span class="list_icon"><img src="../../../assets/public/images/icon_03.png" alt="up" /></span> Birds</a></li>
+                <li><a routerLink="/dashboard/category/rabbit"><span class="list_icon"><img src="../../../assets/public/images/icon_04.png" alt="up" /></span> Rabbit</a></li>
+                <li><a routerLink="/dashboard"><span class="list_icon"><img src="../../../assets/public/images/icon_05.png" alt="up" /></span> Others</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="rght_cate">
+        <div class="rght_cate_hd" id="opn_cat_bg">Featured</div>
+        <div class="sub_dwn" *ngFor="let item of posts">
+            <div class="feat_sec">
+                <div class="feat_sec_img"><img src="{{item.post}}" alt="image" /></div>
+                <div class="feat_txt">{{item.title}}</div>
+                <div class="btm_rgt">
+                    <div class="btm_arc">{{item.category}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

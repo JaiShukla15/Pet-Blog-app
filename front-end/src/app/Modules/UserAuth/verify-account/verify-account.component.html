@@ -1,0 +1,29 @@
+<div class="content_lft">
+  <h2>Please Verify Your Account First</h2>
+  <br>
+  <img src="../../../assets/public/images/img_9.png"  alt=""/>
+</div>
+<div class="content_rgt">
+  <h2>Enter Verification Code </h2>
+  <form [formGroup]="verifyForm" (ngSubmit)="verifyAccount(verifyForm)">
+    <ul>
+      <li><span></span><input type="text" name="otp" required [class.is-invalid]="otp.touched && otp.invalid"
+        formControlName="otp"> </li>
+      <div *ngIf="otp.errors && otp.touched">
+        <span class="text-danger" *ngIf="otp.errors.required">verification-code Required</span>
+        <span class="text-danger" *ngIf="otp.errors.minlength">verification Code must contains at least 6
+          digits
+          !</span>
+      </div>
+    </ul>
+    <input type="submit" value="Verify" style="margin-top: 20px;margin-left:10px;" (click)="onDone()">
+  </form>
+
+</div>
+<div class="popup_sec" id="" [ngStyle]="!show && {'display': 'none'}">
+  <div class="clos_btn"><img src="images/clos.png" alt="" id="clos_pop" /></div>
+  <div class="man_contnt">
+      {{msg}}<br>
+      <input type="submit" value="Ok" style="margin-top: 20px;" (click)="onDone()">
+  </div>
+</div>
