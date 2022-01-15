@@ -13,6 +13,7 @@ const { connectDb } = require("./utility/utility");
 connectDb(config.mongourl);
 require("./auth/passport")(passport);
 const app = express();
+const port  = process.env.PORT || config.port;
 app.use("/static", express.static("public"));
 app.use(fileUpload());
 
@@ -51,6 +52,6 @@ app.use("/categories", CategoryRoute);
 app.get("/", (req, res) => {
     res.json({ message: req.user });
 });
-app.listen(config.port, () => {
-    console.log(`App is running at port ${config.port}`);
+app.listen(port, () => {
+    console.log(`App is running at port ${port}`);
 });
