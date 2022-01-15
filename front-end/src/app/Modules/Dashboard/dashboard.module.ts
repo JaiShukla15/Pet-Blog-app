@@ -8,16 +8,16 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MostPetComponent } from './most-pet/most-pet.component';
 import { InviteComponent } from './invite/invite.component';
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { DashboardComponent } from "./dashboard.component";
 
 @NgModule({
-  declarations: [DashboardComponent,DashboardComponents, SinglePostComponent, NotificationsComponent, MostPetComponent, InviteComponent],
+  declarations: [DashboardComponents,DashboardComponent, SinglePostComponent, NotificationsComponent, MostPetComponent, InviteComponent],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule {}

@@ -2,13 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   Validators,
-  NgForm,
   AbstractControl
 } from "@angular/forms";
 import { PostService } from "src/app/Services/post.service";
 import { LoginService } from "src/app/Services/login.service";
 import { User } from 'src/app/shared/Modal/User';
 import { Router } from '@angular/router';
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-add-post",
@@ -21,7 +21,17 @@ export class AddPostComponent implements OnInit {
   public wait: boolean;
   public postMsg: string;
   public check: boolean;
+  public postForm:FormGroup;
   ngOnInit() {
+    this.postForm = this._fb.group({
+      title: ["", Validators.required],
+      post: [""],
+      category: ["", [Validators.required, Validators.minLength(3)]],
+      creator: [""],
+      userId: [""],
+      profilePic: [""]
+    });
+  
     this._loginService.getLoginDetails().then((userData: any) => {
       this.user = userData;
     });
@@ -43,16 +53,7 @@ export class AddPostComponent implements OnInit {
     private _postService: PostService,
     private _loginService: LoginService 
   ) {}
-  public postForm = this._fb.group({
-    title: ["", Validators.required],
-    post: [""],
-    category: ["", [Validators.required, Validators.minLength(3)]],
-    creator: [""],
-    userId: [""],
-    profilePic: [""]
-  });
-
-  savePost(postForm: NgForm) {
+  savePost(postForm) {
     this.wait = true;
     this.postForm.patchValue({ creator: this.user.firstName });
     this.postForm.get("creator").updateValueAndValidity();

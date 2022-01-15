@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, NgForm, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { LoginService } from "src/app/Services/login.service";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-forget-password",
@@ -11,6 +12,7 @@ import { Router } from "@angular/router";
 })
 export class ForgetPasswordComponent implements OnInit {
   public userMsg;
+  public forgotForm:FormGroup;
   constructor(
     private _fb: FormBuilder,
     private _loginService: LoginService,
@@ -20,16 +22,18 @@ export class ForgetPasswordComponent implements OnInit {
   get username() {
     return this.forgotForm.get("username");
   }
-  public forgotForm = this._fb.group({
-    username: ["", [Validators.required, Validators.email]]
-  });
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.forgotForm = this._fb.group({
+      username: ["", [Validators.required, Validators.email]]
+    });
+  }
   onDone() {
     this.check = false;
     this.forgotForm.reset();
   }
 
-  forgotPassword(forgotForm: NgForm) {
+  forgotPassword(forgotForm) {
     this.check = true;
     this._loginService
       .forgotPassword(forgotForm)

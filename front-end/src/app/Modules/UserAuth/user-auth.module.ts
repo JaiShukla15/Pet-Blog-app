@@ -22,10 +22,10 @@ import { ShowPasswordDirective } from "src/app/shared/Directives/showPassword.di
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthRoutingModule
   ]
 })
 export class UserAuthModule {}

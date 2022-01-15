@@ -14,7 +14,7 @@ export class SidePostsComponent implements OnInit {
   public posts=[];
   public msg:string;
   constructor(
-    private _router: Router,
+    public _router: Router,
     private dashboard: DashboardComponent,
     private postService: PostService
   ) {}

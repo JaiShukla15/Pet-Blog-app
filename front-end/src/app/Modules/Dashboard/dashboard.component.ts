@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class DashboardComponent implements OnInit {
   public username;
-  constructor(public _route:ActivatedRoute,private _loginService:LoginService) { }
+  constructor() { }
   ngOnInit() {
   }
 

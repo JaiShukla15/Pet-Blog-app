@@ -52,5 +52,7 @@ export class MostPetComponent implements OnInit {
        this.msg=error;
      })
   }
-
+  onDone(){
+    
+  }
 }

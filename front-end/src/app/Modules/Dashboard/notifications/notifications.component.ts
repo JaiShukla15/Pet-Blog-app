@@ -14,6 +14,7 @@ public profilePic:string;
 public notifications=[];
 public msg:string;
 public check:boolean=false;
+public wait;
 public notificationCount:number;
   constructor(private _loginService:LoginService) { }
 

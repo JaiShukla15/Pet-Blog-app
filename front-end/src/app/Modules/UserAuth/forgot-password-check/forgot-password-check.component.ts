@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm, FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { LoginService } from "src/app/Services/login.service";
 import { Router } from "@angular/router";
+import { FormGroup } from "@angular/forms";
 
 @Component({
   selector: "app-forgot-password-check",
@@ -9,6 +10,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./forgot-password-check.component.css"]
 })
 export class ForgotPasswordCheckComponent implements OnInit {
+  forgotForm:FormGroup;
+
   get username() {
     return this.forgotForm.get("username");
   }
@@ -26,13 +29,14 @@ export class ForgotPasswordCheckComponent implements OnInit {
     private router: Router,
     private _loginService: LoginService
   ) {}
-  public forgotForm = this._fb.group({
-    username: ["", [Validators.required, Validators.email]],
-    securityAns: ["", Validators.required],
-    cpassword: ["", Validators.required]
-  });
-  ngOnInit() {}
-  forgotPasswordCheck(forgotForm: NgForm) {
+  ngOnInit() {
+    this.forgotForm = this._fb.group({
+      username: ["", [Validators.required, Validators.email]],
+      securityAns: ["", Validators.required],
+      cpassword: ["", Validators.required]
+    });
+  }
+  forgotPasswordCheck(forgotForm) {
     this._loginService
       .forgotPasswordCheck(forgotForm)
       .then((response: any) => {

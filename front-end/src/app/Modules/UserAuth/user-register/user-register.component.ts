@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import {
   FormBuilder,
   Validators,
-  NgForm,
   AbstractControl,
   FormGroup
 } from "@angular/forms";
@@ -23,6 +22,7 @@ export class UserRegisterComponent implements OnInit {
   public wait: boolean = false;
   public msg;
   public check = false;
+  public registerForm:FormGroup;
   get firstName() {
     return this.registerForm.get("firstName");
   }
@@ -53,35 +53,36 @@ export class UserRegisterComponent implements OnInit {
   get termsCondition() {
     return this.registerForm.get("termsCondition");
   }
-  public registerForm = this._fb.group(
-    {
-      firstName: ["", [Validators.required, Validators.minLength(3)]],
-      lastName: ["", [Validators.minLength(3)]],
-      email: ["", [Validators.email, Validators.required]],
-      userName: ["", [Validators.required, Validators.email]],
-      password: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern(new RegExp("(?=.*[A-Z])(?=.*[a-z])(?=.*[$#%^+=])"))
-        ]
-      ],
-      cpassword: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.pattern(new RegExp("(?=.*[A-Z])(?=.*[a-z])(?=.*[$#%^+=])"))
-        ]
-      ],
-      security: ["", [Validators.required, Validators.minLength(3)]],
-      profilePic: ["", Validators.required],
-      termsCondition: ["", Validators.required]
-    },
-    { validators: this.passwordMatch.bind(this) }
-  );
-  ngOnInit() {}
+  ngOnInit() {
+    this.registerForm = this._fb.group(
+      {
+        firstName: ["", [Validators.required, Validators.minLength(3)]],
+        lastName: ["", [Validators.minLength(3)]],
+        email: ["", [Validators.email, Validators.required]],
+        userName: ["", [Validators.required, Validators.email]],
+        password: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(new RegExp("(?=.*[A-Z])(?=.*[a-z])(?=.*[$#%^+=])"))
+          ]
+        ],
+        cpassword: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern(new RegExp("(?=.*[A-Z])(?=.*[a-z])(?=.*[$#%^+=])"))
+          ]
+        ],
+        security: ["", [Validators.required, Validators.minLength(3)]],
+        profilePic: ["", Validators.required],
+        termsCondition: ["", Validators.required]
+      },
+      { validators: this.passwordMatch.bind(this) }
+    );
+  }
   passwordMatch(control: AbstractControl) {
     let upassword = control.get("password");
     let cpassword = control.get("cpassword");
@@ -91,7 +92,7 @@ export class UserRegisterComponent implements OnInit {
       return null;
     }
   }
-  onSave(regForm: NgForm) {
+  onSave(regForm) {
     this.wait = true;
 
     this._regService

@@ -129,7 +129,7 @@ export class UserPostsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  unlike(postId, userId,index) {
+  unlike(postId, userId) {
     this.postService.unlikePost(postId, userId);
     this.liked = false;
     this.ngOnInit();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-dashboard",
@@ -8,8 +8,19 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
   public username;
-  constructor(public _route: ActivatedRoute) {
+  public wait;
+  public profilePic;
+
+  constructor(public _route: ActivatedRoute,private _router:Router) {
   }
   ngOnInit() {
+  }
+  logout(){
+    localStorage.clear();
+  }
+  onDone(){
+  }
+  goTo(url:string){
+    this._router.navigateByUrl(url);
   }
 }

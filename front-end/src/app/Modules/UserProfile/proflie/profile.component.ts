@@ -15,7 +15,7 @@ import {environment} from 'src/environments/environment';
 export class ProfileComponent implements OnInit {
   public posts=[];
   public msg:string;
-  constructor(private _router:Router,private dashboard:DashboardComponent,private postService:PostService) { }
+  constructor(public _router:Router,private dashboard:DashboardComponent,private postService:PostService) { }
 
   ngOnInit() {
     this._router.navigate(['profile'],{relativeTo:this.dashboard._route})
