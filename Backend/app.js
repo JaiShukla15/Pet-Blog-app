@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const logjs = require("log4js");
 const session = require("express-session");
 const passport = require("passport");
