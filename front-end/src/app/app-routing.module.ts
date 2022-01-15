@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PageNotFoundComponent } from "./Modules/page-not-found/page-not-found.component";
 import { HeaderComponent } from "./Modules/header/header.component";
+import { FooterComponent } from "./Modules/footer/footer.component";
 
 const routes: Routes = [
   {
@@ -27,4 +28,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
-export const RoutingComponents = [HeaderComponent, PageNotFoundComponent];
+export const RoutingComponents = [HeaderComponent, PageNotFoundComponent,FooterComponent];

@@ -8,9 +8,10 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MostPetComponent } from './most-pet/most-pet.component';
 import { InviteComponent } from './invite/invite.component';
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 @NgModule({
-  declarations: [DashboardComponents, SinglePostComponent, NotificationsComponent, MostPetComponent, InviteComponent],
+  declarations: [DashboardComponent,DashboardComponents, SinglePostComponent, NotificationsComponent, MostPetComponent, InviteComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
