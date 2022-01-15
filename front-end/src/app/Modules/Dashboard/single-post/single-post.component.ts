@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoginService } from "src/app/Services/login.service";
 import { User } from "src/app/shared/Modal/User";
 import {app} from "../../../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: "app-single-post",
@@ -47,7 +48,7 @@ export class SinglePostComponent implements OnInit {
       .getSinglePost(this.postId)
       .then((response: any) => {
         this.post = response;
-        this.post.post = `${app.domainName}post/display/${response.post}`;
+        this.post.post = `${environment.baseUrl}post/display/${response.post}`;
         this.post.profilePic = this.loginService.getProfilePicture(
           this.user.email
         );

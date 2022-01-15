@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/Services/login.service';
 import {app} from "../../../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
@@ -21,7 +22,7 @@ public notificationCount:number;
       if (response.firstName) {
         this.username = response.firstName;
         this.userId=response._id;
-        this.profilePic = `${app.domainName}user/profilePic/${response.email}`;
+        this.profilePic = `${environment.baseUrl}user/profilePic/${response.email}`;
       }
     }).then(()=>{
       this._loginService.getNotifications(this.userId).then((response:any)=>{

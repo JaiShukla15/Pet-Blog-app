@@ -4,6 +4,7 @@ import { DashboardComponent } from '../../Dashboard/dashboard/dashboard.componen
 import { LoginService } from 'src/app/Services/login.service';
 import { PostService } from 'src/app/Services/post.service';
 import {app} from './../../../shared/Constants/appConstants';
+import {environment} from 'src/environments/environment';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ProfileComponent implements OnInit {
     this.postService.getLatestPosts().then((posts:any)=>{
       this.posts=posts.data;
       this.posts.map(post=>{
-        (post.post = `${app.domainName}post/display/${post.post}`)
+        (post.post = `${environment.baseUrl}post/display/${post.post}`)
       })
       }).catch(error=>{
   

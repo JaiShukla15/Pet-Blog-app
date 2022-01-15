@@ -5,6 +5,8 @@ import { PostService } from "src/app/Services/post.service";
 import { Router } from "@angular/router";
 import { List } from 'linqts';
 import {app} from "../.././../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
+
 
 @Component({
   selector: "app-timeline",
@@ -33,7 +35,7 @@ export class TimelineComponent implements OnInit {
       .then((response: any) => {
         this.wait = false;
         this.user = response;
-        this.profilePic = `${app.domainName}user/profilePic/${this.user.email}`;
+        this.profilePic = `${environment.baseUrl}user/profilePic/${this.user.email}`;
         if (!this.user.isVerified) {
           this.router.navigate(["/verifyAccount"]);
         }
@@ -48,14 +50,14 @@ export class TimelineComponent implements OnInit {
           .then((data: any) => {
             this.posts = data;
             this.posts.map(
-              post => (post.post = `${app.domainName}post/display/${post.post}`)
+              post => (post.post = `${environment.baseUrl}post/display/${post.post}`)
             );
             this.posts.map(
               post =>
-                (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+                (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
             );
             this.posts.map(post => {
-              return (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`);
+              return (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`);
             });
             this.posts = this.posts.map(postonly=>{
               let x = new List<any>(postonly.likes)
@@ -93,11 +95,11 @@ export class TimelineComponent implements OnInit {
     this.posts = response;
     this.posts.map(
       post =>
-        (post.post = `${app.domainName}post/display/${post.post}`)
+        (post.post = `${environment.baseUrl}post/display/${post.post}`)
     );
     this.posts.map(
       post =>
-        (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+        (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
     );
    this.posts.forEach(post => {
       let data = post.likes.filter(like => {

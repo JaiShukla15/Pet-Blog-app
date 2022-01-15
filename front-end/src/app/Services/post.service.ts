@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import {app} from "../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +20,7 @@ export class PostService {
       postData.append("userId", postForm.userId);
       postData.append("profilePic", postForm.profilePic);
       this._http
-        .post(`${app.domainName}post/post`, postData)
+        .post(`${environment.baseUrl}post/post`, postData)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.message);
@@ -31,19 +32,19 @@ export class PostService {
   }
   likePost(postId, userId) {
     this._http
-      .post(`${app.domainName}post/like`, { postId, userId })
+      .post(`${environment.baseUrl}post/like`, { postId, userId })
       .subscribe((response: any) => {});
   }
 
   unlikePost(postId, userId) {
     this._http
-      .post(`${app.domainName}post/unlike`, { postId, userId })
+      .post(`${environment.baseUrl}post/unlike`, { postId, userId })
       .subscribe((response: any) => {});
   }
   getPost(page,pagination) {
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/posts/${page}/${pagination}`)
+        .get(`${environment.baseUrl}post/posts/${page}/${pagination}`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -56,7 +57,7 @@ export class PostService {
   getSinglePost(postId) {
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/${postId}`)
+        .get(`${environment.baseUrl}post/${postId}`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -69,7 +70,7 @@ export class PostService {
   addComment(commentForm) {
     return new Promise((resolve, reject) => {
       this._http
-        .post(`${app.domainName}post/comment`, commentForm)
+        .post(`${environment.baseUrl}post/comment`, commentForm)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response);
@@ -82,7 +83,7 @@ export class PostService {
   addReply(commentForm,commentId) {
     return new Promise((resolve, reject) => {
       this._http
-        .post(`${app.domainName}post/comment/${commentId}/reply`, commentForm)
+        .post(`${environment.baseUrl}post/comment/${commentId}/reply`, commentForm)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response);
@@ -95,7 +96,7 @@ export class PostService {
   getLatestPosts() {
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/getLatestPosts`)
+        .get(`${environment.baseUrl}post/getLatestPosts`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response);
@@ -108,7 +109,7 @@ export class PostService {
   getOldestPosts() {
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/getOldestPosts`)
+        .get(`${environment.baseUrl}post/getOldestPosts`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response);
@@ -121,7 +122,7 @@ export class PostService {
   getCategoryPosts(category) {
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/category/${category}`)
+        .get(`${environment.baseUrl}post/category/${category}`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -134,7 +135,7 @@ export class PostService {
   mostClickedPosts(){ 
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/posts/mostClicked`)
+        .get(`${environment.baseUrl}post/posts/mostClicked`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -147,7 +148,7 @@ export class PostService {
   mostCommentedPosts(){ 
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/posts/mostCommented`)
+        .get(`${environment.baseUrl}post/posts/mostCommented`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -160,7 +161,7 @@ export class PostService {
   getCategoriesData(){
        return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}categories/categories`)
+        .get(`${environment.baseUrl}categories/categories`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);
@@ -173,7 +174,7 @@ export class PostService {
   getUserPosts(id,page,pagination){
     return new Promise((resolve, reject) => {
       this._http
-        .get(`${app.domainName}post/posts/userPosts/${id}/${page}/${pagination}`)
+        .get(`${environment.baseUrl}post/posts/userPosts/${id}/${page}/${pagination}`)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.data);

@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import {app} from "../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
+
 @Injectable({
   providedIn: "root"
 })
@@ -19,7 +21,7 @@ export class RegisterService {
       userData.append("security", userForm.security);
       userData.append("profilePic", userForm.profilePic);
       this._http
-        .post<any>(`${app.domainName}user/register`, userData)
+        .post<any>(`${environment.baseUrl}user/register`, userData)
         .subscribe(data => {
           if (data.success === false) {
             reject(data.message);
@@ -32,7 +34,7 @@ export class RegisterService {
   verifyUserService(verifyForm) {
     return new Promise((resolve, reject) => {
       this._http
-        .post(`${app.domainName}user/verifyAccount`, verifyForm)
+        .post(`${environment.baseUrl}user/verifyAccount`, verifyForm)
         .subscribe((response: any) => {
           if (response.success) {
             resolve(response.message);
@@ -45,7 +47,7 @@ export class RegisterService {
   changePassword(resetPasswordForm) {
     return new Promise((resolve, reject) => {
       this._http
-        .post(`${app.domainName}user/resetPassword`, resetPasswordForm)
+        .post(`${environment.baseUrl}user/resetPassword`, resetPasswordForm)
         .subscribe((response: any) => {
           if (response.success === true) {
             resolve(response.message);
@@ -58,7 +60,7 @@ export class RegisterService {
   invite(inviteForm){
     return new Promise((resolve, reject) => {
       this._http
-        .post(`${app.domainName}user/invite`, inviteForm)
+        .post(`${environment.baseUrl}user/invite`, inviteForm)
         .subscribe((response: any) => {
           if (response.success === true) {
             resolve(response.message);

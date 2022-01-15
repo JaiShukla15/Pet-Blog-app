@@ -6,6 +6,8 @@ import { User } from "src/app/shared/Modal/User";
 import { Router, ActivatedRoute } from "@angular/router";
 import { List } from 'linqts';
 import {app} from '../../../shared/Constants/appConstants';
+import {environment} from 'src/environments/environment';
+
 @Component({
   selector: "app-user-posts",
   templateUrl: "./user-posts.component.html",
@@ -75,11 +77,11 @@ export class UserPostsComponent implements OnInit {
           this.posts = response;
           this.posts.map(
             post =>
-              (post.post = `${app.domainName}post/display/${post.post}`)
+              (post.post = `${environment.baseUrl}post/display/${post.post}`)
           );
           this.posts.map(
             post =>
-              (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+              (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
           );
 
           this.postsWithLike = this.posts.map(postonly=>{
@@ -102,11 +104,11 @@ export class UserPostsComponent implements OnInit {
           this.posts = response;
           this.posts.map(
             post =>
-              (post.post = `${app.domainName}post/display/${post.post}`)
+              (post.post = `${environment.baseUrl}post/display/${post.post}`)
           );
           this.posts.map(
             post =>
-              (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+              (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
           );        
           this.postsWithLike = this.posts.map(postonly=>{
             let x = new List<any>(postonly.likes)
@@ -206,11 +208,11 @@ export class UserPostsComponent implements OnInit {
       this.posts = response;
       this.posts.map(
         post =>
-          (post.post = `${app.domainName}post/display/${post.post}`)
+          (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(
         post =>
-          (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+          (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
       );
 
       this.postsWithLike = this.posts.map(postonly=>{
@@ -229,10 +231,10 @@ export class UserPostsComponent implements OnInit {
     this.postService.mostCommentedPosts().then((response: any) => {
       this.posts = response;
       this.posts.map(
-        post => (post.post = `${app.domainName}post/display/${post.post}`)
+        post => (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(post => {
-        return (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`);
+        return (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`);
       });
       this.postsWithLike = this.posts.map(postonly=>{
         let x = new List<any>(postonly.likes)
@@ -252,11 +254,11 @@ export class UserPostsComponent implements OnInit {
       this.posts = response;
       this.posts.map(
         post =>
-          (post.post = `${app.domainName}post/display/${post.post}`)
+          (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(
         post =>
-          (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`)
+          (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`)
       );
       this.postsWithLike = this.posts.map(postonly=>{
         let x = new List<any>(postonly.likes)
@@ -275,10 +277,10 @@ export class UserPostsComponent implements OnInit {
     this.postService.mostClickedPosts().then((response: any) => {
       this.posts = response;
       this.posts.map(
-        post => (post.post = `${app.domainName}post/display/${post.post}`)
+        post => (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(post => {
-        return (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`);
+        return (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`);
       });
       this.postsWithLike = this.posts.map(postonly=>{
         let x = new List<any>(postonly.likes)
@@ -293,10 +295,10 @@ export class UserPostsComponent implements OnInit {
     this.postService.getLatestPosts().then((response: any) => {
       this.posts = response.data;
       this.posts.map(
-        post => (post.post = `${app.domainName}post/display/${post.post}`)
+        post => (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(post => {
-        return (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`);
+        return (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`);
       });
       this.postsWithLike = this.posts.map(postonly=>{
         let x = new List<any>(postonly.likes)
@@ -311,10 +313,10 @@ export class UserPostsComponent implements OnInit {
     this.postService.getOldestPosts().then((response: any) => {
       this.posts = response.data;
       this.posts.map(
-        post => (post.post = `${app.domainName}post/display/${post.post}`)
+        post => (post.post = `${environment.baseUrl}post/display/${post.post}`)
       );
       this.posts.map(post => {
-        return (post.profilePic = `${app.domainName}user/profilePic/${post.profilePic}`);
+        return (post.profilePic = `${environment.baseUrl}user/profilePic/${post.profilePic}`);
       });
       this.postsWithLike = this.posts.map(postonly=>{
         let x = new List<any>(postonly.likes)

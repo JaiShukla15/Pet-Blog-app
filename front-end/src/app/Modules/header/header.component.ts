@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { LoginService } from "../../Services/login.service";
 import { Router } from "@angular/router";
 import {app} from "../../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
+
 
 @Component({
   selector: "app-header",
@@ -22,7 +24,7 @@ export class HeaderComponent implements OnInit {
       if (response.firstName) {
         this.username = response.firstName;
         this.userId=response._id;
-        this.profilePic = `${app.domainName}user/profilePic/${response.email}`;
+        this.profilePic = `${environment.baseUrl}user/profilePic/${response.email}`;
       }
     }).then(()=>{
       this._loginService.getNotifications(this.userId).then((response:any)=>{

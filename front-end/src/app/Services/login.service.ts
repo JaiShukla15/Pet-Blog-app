@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Subject } from "rxjs";
 import { NgForm } from "@angular/forms";
+import {environment} from 'src/environments/environment';
 import {app} from "../shared/Constants/appConstants";
 @Injectable({
   providedIn: "root"
@@ -14,7 +15,7 @@ export class LoginService {
   loginUser(loginForm: NgForm) {
     return new Promise((res, rej) => {
       this._http
-        .post(`${app.domainName}user/login`, loginForm)
+        .post(`${environment.baseUrl}user/login`, loginForm)
         .subscribe((response: any) => {
           if (response.data) {
             localStorage.setItem("pplToken", response.token);
@@ -31,7 +32,7 @@ export class LoginService {
   forgotPassword(forgotForm: NgForm) {
     return new Promise((res, rej) => {
       this._http
-        .post(`${app.domainName}user/forgotPassword`, forgotForm.value)
+        .post(`${environment.baseUrl}user/forgotPassword`, forgotForm.value)
         .subscribe((response: any) => {
           if (response.success) {
             this.loginDetails.next(response.message);
@@ -45,7 +46,7 @@ export class LoginService {
   forgotPasswordCheck(forgotForm: NgForm) {
     return new Promise((res, rej) => {
       this._http
-        .put(`${app.domainName}user/forgotPasswordCheck`, forgotForm.value)
+        .put(`${environment.baseUrl}user/forgotPasswordCheck`, forgotForm.value)
         .subscribe((response: any) => {
           if (response.success) {
             this.loginDetails.next(response.message);
@@ -64,7 +65,7 @@ export class LoginService {
       let token = localStorage.getItem("pplToken");
       if (token) {
         this._http
-          .post(`${app.domainName}user/verify`, { token })
+          .post(`${environment.baseUrl}user/verify`, { token })
           .subscribe((response: any) => {
             if (response.success) {
               this.user = response.data;
@@ -79,11 +80,11 @@ export class LoginService {
   }
 
   getProfilePicture = (email: string) =>
-    `${app.domainName}user/profilePic/${email}`;
+    `${environment.baseUrl}user/profilePic/${email}`;
 
     getNotifications=(userId)=>{
   return new Promise((resolve,reject)=>{
-     this._http.get(`${app.domainName}notifications/notifications/${userId}`).subscribe((response:any)=>{   
+     this._http.get(`${environment.baseUrl}notifications/notifications/${userId}`).subscribe((response:any)=>{   
      if(response.success){
        resolve({success:true,data:response.data});
      }else{
@@ -94,7 +95,7 @@ export class LoginService {
     }
     clearNotifications(userId){
         return new Promise((resolve,reject)=>{
-        this._http.put(`${app.domainName}notifications/clear/${userId}`,{}).subscribe((response:any)=>{   
+        this._http.put(`${environment.baseUrl}notifications/clear/${userId}`,{}).subscribe((response:any)=>{   
         if(response.success){
           resolve({success:true,message:response.message});
         }else{

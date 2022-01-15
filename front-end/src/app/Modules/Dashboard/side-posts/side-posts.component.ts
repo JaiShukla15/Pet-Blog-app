@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { PostService } from "src/app/Services/post.service";
 import {app} from "../../../shared/Constants/appConstants";
+import {environment} from 'src/environments/environment';
+
 @Component({
   selector: "app-side-posts",
   templateUrl: "./side-posts.component.html",
@@ -27,7 +29,7 @@ export class SidePostsComponent implements OnInit {
     this.postService.getLatestPosts().then((posts:any)=>{
     this.posts=posts.data;
     this.posts.map(post=>{
-      (post.post = `${app.domainName}post/display/${post.post}`)
+      (post.post = `${environment.baseUrl}post/display/${post.post}`)
     })
     }).catch(error=>{
 
